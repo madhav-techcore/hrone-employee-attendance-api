@@ -1,37 +1,54 @@
-# Code Review
+# HROne Employee Attendance & Analytics API
 
-## Project
+Employee Attendance and Analytics REST API built with Python, FastAPI, and MongoDB.
 
-Employee Attendance & Analytics API
+## Features
 
-## Review Scope
+- Employee creation and listing
+- Attendance punch-in and punch-out
+- Duplicate punch-in prevention
+- Manual attendance corrections with audit history
+- Monthly employee attendance analytics
+- Department attendance summaries
+- Late-arrival leaderboard
+- Department attendance trends
+- MongoDB query execution plan analysis
 
-The review covers API input validation, employee and attendance operations, analytics endpoints, MongoDB query behavior, and error handling.
+## Requirements
 
-## Checks Performed
+- Python 3.11+
+- MongoDB 6.0+
+- Git
 
-- Verified the health endpoint.
-- Tested employee creation and duplicate employee handling.
-- Tested attendance punch-in and duplicate punch-in handling.
-- Tested attendance correction and audit history.
-- Tested employee monthly analytics.
-- Tested department summary and late-arrival leaderboard.
-- Tested department attendance trends.
-- Tested the admin query explain endpoint.
+## Setup
 
-## Findings
+1. Clone this repository.
+2. Create and activate a Python virtual environment.
+3. Install dependencies:
 
-- The duplicate employee test returned HTTP 409 as expected.
-- The duplicate punch-in test returned HTTP 409 as expected.
-- Attendance correction returned HTTP 200 and included change history.
-- Analytics endpoints tested so far returned HTTP 200.
-- The late leaderboard required a correction to its MongoDB ranking stage before it returned HTTP 200.
-- Further validation and error-path testing should be completed before final submission.
+   `pip install -r requirements.txt`
 
-## Remaining Checks
+4. Create a `.env` file in the project root:
 
-- Complete testing of the supported admin explain options.
-- Check invalid inputs and date ranges.
-- Confirm the application can be installed and started from a clean environment.
-- Review secret handling and required deliverables.
+   ```env
+   MONGO_URI=mongodb://localhost:27017
+   MONGO_DB=attendance_db
+   ```
 
+5. Start the API:
+
+   `uvicorn app.main:app --reload --port 8000`
+
+6. Open the interactive API documentation at `http://127.0.0.1:8000/docs`.
+
+## Testing
+
+Manual endpoint testing has been performed. See `REVIEW.md` for the tested functionality and remaining checks.
+
+## Design Decisions
+
+See `DECISIONS.md` for the main design choices and `DATA_MODEL.md` for the data model.
+
+## Limitations
+
+Review `REVIEW.md` for remaining validation and testing work.
